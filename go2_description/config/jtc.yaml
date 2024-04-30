@@ -1,0 +1,186 @@
+# Controller Manager configuration
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # Hz
+    use_sim_time: true  # If running in simulation
+
+    # Define the available controllers
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    FRposition_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    FLposition_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    RRposition_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    LRposition_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+# Define the properties of each controller
+FRposition_trajectory_controller:
+  ros__parameters:
+    joints:
+      - FR_hip_joint
+      - FR_thigh_joint
+      - FR_calf_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0  # Hz
+    action_monitor_rate: 20.0  # Hz
+
+    allow_partial_joints_goal: false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
+    gains:
+      FR_hip_joint:
+        p: 100.0
+        i: 0.0
+        d: 5.0
+
+      FR_thigh_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
+
+      FR_calf_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
+
+FLposition_trajectory_controller:
+  ros__parameters:
+    joints:
+      - FL_hip_joint
+      - FL_thigh_joint
+      - FL_calf_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0  # Hz
+    action_monitor_rate: 20.0
+
+    allow_partial_joints_goal: false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
+    gains:
+      FL_hip_joint:
+        p: 100.0
+        i: 0.0
+        d: 5.0
+
+      FL_thigh_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
+
+      FL_calf_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
+
+RRposition_trajectory_controller:
+  ros__parameters:
+    joints:
+      - RR_hip_joint
+      - RR_thigh_joint
+      - RR_calf_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0  # Hz
+    action_monitor_rate: 20.0
+
+    allow_partial_joints_goal: false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
+    gains:
+      RR_hip_joint:
+        p: 100.0
+        i: 0.0
+        d: 5.0
+
+      RR_thigh_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
+
+      RR_calf_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
+
+LRposition_trajectory_controller:
+  ros__parameters:
+    joints:
+      - LR_hip_joint
+      - LR_thigh_joint
+      - LR_calf_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0  # Hz
+    action_monitor_rate: 20.0
+
+    allow_partial_joints_goal: false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
+    gains:
+      LR_hip_joint:
+        p: 100.0
+        i: 0.0
+        d: 5.0
+
+      LR_thigh_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
+
+      LR_calf_joint:
+        p: 300.0
+        i: 0.0
+        d: 8.0
