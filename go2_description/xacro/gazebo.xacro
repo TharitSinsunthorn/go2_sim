@@ -142,6 +142,7 @@
         <mu2>0.2</mu2>
         <kp  value="1000000.0"/>
         <kd  value="1.0"/>
+        <!-- <material>Gazebo/DarkGrey</material> -->
     </gazebo>
 
     <gazebo reference="stick_link">
@@ -158,7 +159,7 @@
     <gazebo reference="FL_hip">
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
-
+        <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="FL_thigh">
         <mu1>0.2</mu1>
@@ -184,6 +185,7 @@
     <gazebo reference="FR_hip">
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
+        <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="FR_thigh">
         <mu1>0.2</mu1>
@@ -209,6 +211,7 @@
     <gazebo reference="RL_hip">
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
+        <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="RL_thigh">
         <mu1>0.2</mu1>
@@ -234,6 +237,7 @@
     <gazebo reference="RR_hip">
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
+        <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="RR_thigh">
         <mu1>0.2</mu1>
