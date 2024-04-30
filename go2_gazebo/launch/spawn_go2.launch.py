@@ -45,7 +45,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('go2_description'), 'launch', 'go2_visualize.launch.py')
             ]),
-    launch_arguments={'use_joint_state_gui': 'True',
+    launch_arguments={'use_joint_state_gui': 'False',
                       'use_sim_time': "True",
                       'urdf_file': urdf_file}.items(),
     )
@@ -69,7 +69,7 @@ def generate_launch_description():
             world_file_name_arg,
             urdf_file_arg,
             start_world,
-            # launch_ros2_control,
+            launch_ros2_control,
             spawn_robot,
             # joystick, 
             # navigation

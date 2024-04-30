@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="leg" params="name mirror mirror_dae front_hind front_hind_dae">
-        <ros2_control name="GazeboSystem" type="system">
-            <hardware>
-                <plugin>gazebo_ros2_control/GazeboSystem</plugin>
-            </hardware>
-            
-            <joint name="{name}_hip_joint">
+    <!-- <xacro:macro name="leg" params="name mirror mirror_dae front_hind front_hind_dae"> -->
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+        
+        <joint name="FR_hip_joint">
             <command_interface name="position">
                 <param name="min">${hip_position_min}</param>
                 <param name="max">${hip_position_max}</param>
@@ -23,9 +23,9 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
-            </joint>     
+        </joint>     
 
-            <joint name="{name}_thigh_joint">
+        <joint name="FR_thigh_joint">
             <command_interface name="position">
                 <param name="min">${thigh_position_min}</param>
                 <param name="max">${thigh_position_max}</param>
@@ -41,9 +41,9 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
-            </joint>     
+        </joint>     
 
-        <joint name="{name}_calf_joint">
+        <joint name="FR_calf_joint">
             <command_interface name="position">
                 <param name="min">${calf_position_min}</param>
                 <param name="max">${calf_position_max}</param>
@@ -59,11 +59,173 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
             <state_interface name="effort"/>
-            </joint>     
+        </joint>     
 
-        </ros2_control>
+        <joint name="FL_hip_joint">
+            <command_interface name="position">
+                <param name="min">${hip_position_min}</param>
+                <param name="max">${hip_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${hip_velocity_min}</param>
+                <param name="max">${hip_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${hip_torque_min}</param>
+                <param name="max">${hip_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>     
 
-    </xacro:macro>
+        <joint name="FL_thigh_joint">
+            <command_interface name="position">
+                <param name="min">${thigh_position_min}</param>
+                <param name="max">${thigh_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${thigh_velocity_min}</param>
+                <param name="max">${thigh_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${thigh_torque_min}</param>
+                <param name="max">${thigh_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>     
+
+        <joint name="FL_calf_joint">
+            <command_interface name="position">
+                <param name="min">${calf_position_min}</param>
+                <param name="max">${calf_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${calf_velocity_min}</param>
+                <param name="max">${calf_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${calf_torque_min}</param>
+                <param name="max">${calf_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>    
+
+        <joint name="RR_hip_joint">
+            <command_interface name="position">
+                <param name="min">${hip_position_min}</param>
+                <param name="max">${hip_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${hip_velocity_min}</param>
+                <param name="max">${hip_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${hip_torque_min}</param>
+                <param name="max">${hip_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>     
+
+        <joint name="RR_thigh_joint">
+            <command_interface name="position">
+                <param name="min">${thigh_position_min}</param>
+                <param name="max">${thigh_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${thigh_velocity_min}</param>
+                <param name="max">${thigh_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${thigh_torque_min}</param>
+                <param name="max">${thigh_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>     
+
+        <joint name="RR_calf_joint">
+            <command_interface name="position">
+                <param name="min">${calf_position_min}</param>
+                <param name="max">${calf_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${calf_velocity_min}</param>
+                <param name="max">${calf_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${calf_torque_min}</param>
+                <param name="max">${calf_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>   
+
+        <joint name="RL_hip_joint">
+            <command_interface name="position">
+                <param name="min">${hip_position_min}</param>
+                <param name="max">${hip_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${hip_velocity_min}</param>
+                <param name="max">${hip_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${hip_torque_min}</param>
+                <param name="max">${hip_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>     
+
+        <joint name="RL_thigh_joint">
+            <command_interface name="position">
+                <param name="min">${thigh_position_min}</param>
+                <param name="max">${thigh_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${thigh_velocity_min}</param>
+                <param name="max">${thigh_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${thigh_torque_min}</param>
+                <param name="max">${thigh_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>     
+
+        <joint name="RL_calf_joint">
+            <command_interface name="position">
+                <param name="min">${calf_position_min}</param>
+                <param name="max">${calf_position_max}</param>
+            </command_interface>
+            <command_interface name="velocity">
+                <param name="min">${calf_velocity_min}</param>
+                <param name="max">${calf_velocity_max}</param>
+            </command_interface>
+            <command_interface name="effort">
+                <param name="min">${calf_torque_min}</param>
+                <param name="max">${calf_torque_max}</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>     
+
+    </ros2_control>
+
+    <!-- </xacro:macro> -->
 
     <!-- Gazebo's ros2_control plugin  -->
     <gazebo>

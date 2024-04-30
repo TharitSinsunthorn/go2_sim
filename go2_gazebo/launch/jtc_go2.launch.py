@@ -28,17 +28,18 @@ def generate_launch_description():
         arguments=["FLposition_trajectory_controller", "-c", "/controller_manager"],
     )
 
-    LR_robot_controller_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["LRposition_trajectory_controller", "-c", "/controller_manager"],
-    )
-
     RR_robot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["RRposition_trajectory_controller", "-c", "/controller_manager"],
     )
+    
+    RL_robot_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["RLposition_trajectory_controller", "-c", "/controller_manager"],
+    )
+    
 
     # create and return launch description object
     return LaunchDescription(
@@ -60,13 +61,13 @@ def generate_launch_description():
             RegisterEventHandler(
                 event_handler=OnProcessStart(
                   target_action=FL_robot_controller_spawner,
-                  on_start=[LR_robot_controller_spawner],
+                  on_start=[RR_robot_controller_spawner],
                 )
             ),
             RegisterEventHandler(
                 event_handler=OnProcessStart(
-                  target_action=LR_robot_controller_spawner,
-                  on_start=[RR_robot_controller_spawner],
+                  target_action=RR_robot_controller_spawner,
+                  on_start=[RL_robot_controller_spawner],
                 )
             ),
         ]
