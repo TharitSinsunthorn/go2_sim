@@ -47,18 +47,12 @@ def generate_launch_description():
             os.path.join(pkg_gazebo_ros, 'launch', 'gazebo.launch.py'),
         )
     ) 
-    
-    # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description',
-                                   '-entity', 'go2'],
-                        output='screen')   
-
+       
     world_file_name = LaunchConfiguration('world_file_name')
 
     world_file_name_launch_arg = DeclareLaunchArgument(
         'world_file_name',
-        default_value='box_bot_empty.world'
+        default_value='empty.world'
     )
 
     return LaunchDescription([
@@ -69,5 +63,4 @@ def generate_launch_description():
           default_value=[os.path.join(pkg_go2_gazebo, 'worlds'),'/', world_file_name,''],
           description='SDF world file'),
         gazebo,
-        spawn_entity
     ])
