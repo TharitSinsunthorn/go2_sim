@@ -27,12 +27,36 @@ def generate_launch_description():
         default_value='go2.xacro'
     )
 
-
+    # Position and orientation
+    # [X, Y, Z]
+    position = [0.06, 0.0, 0.6]
+    # [Roll, Pitch, Yaw]
+    orientation = [0.0, 0.0, 0.0]
+    # Base Name or robot
+    robot_name = "GO2"
+    
     start_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('go2_gazebo'), 'launch'),
             '/start_world.launch.py']),
     launch_arguments={'world_file_name': world_file_name}.items(),
+    )
+    
+    
+    # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
+    spawn_robot = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        name='spawn_entity',
+        output='screen',
+        arguments=['-entity',
+                   robot_name,
+                   '-x', str(position[0]), '-y', str(position[1]
+                                                     ), '-z', str(position[2]),
+                   '-R', str(orientation[0]), '-P', str(orientation[1]
+                                                        ), '-Y', str(orientation[2]),
+                   '-topic', '/robot_description'
+                   ]
     )
 
     launch_ros2_control = IncludeLaunchDescription(
@@ -41,7 +65,7 @@ def generate_launch_description():
             '/jtc_go2.launch.py'])
     )
 
-    spawn_robot = IncludeLaunchDescription(
+    visualize_robot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('go2_description'), 'launch', 'go2_visualize.launch.py')
             ]),
@@ -69,8 +93,9 @@ def generate_launch_description():
             world_file_name_arg,
             urdf_file_arg,
             start_world,
-            launch_ros2_control,
             spawn_robot,
+            launch_ros2_control,
+            visualize_robot,
             # joystick, 
             # navigation
         ]
