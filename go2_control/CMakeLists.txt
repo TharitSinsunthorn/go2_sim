@@ -8,9 +8,8 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 # find_package(ament_cmake_python REQUIRED)
-# find_package(rclpy REQUIRED)
-# find_package(urdf REQUIRED)
-# find_package(xacro REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(trajectory_msgs REQUIRED)
 find_package(robot_state_publisher REQUIRED)
 find_package(gazebo_ros REQUIRED)
 find_package(controller_manager REQUIRED)
@@ -36,6 +35,15 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+add_executable(simple_publisher_node src/simple_topic_publisher.cpp)
+ament_target_dependencies(simple_publisher_node rclcpp trajectory_msgs)
+
+install(TARGETS
+   simple_publisher_node
+   DESTINATION lib/${PROJECT_NAME}
+ )
+
 
 install(
   DIRECTORY
