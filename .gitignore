@@ -1,0 +1,34 @@
+# Ignore the cycloneddw_ws package
+cycloneddw_ws/
+
+# Ignore other common files and directories in ROS 2 workspaces
+
+# Build, install, and log directories
+build/
+install/
+log/
+
+# ROS 2 specific files
+.colcon/
+vcs/
+.vscode/
+
+# Python specific files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore personal IDE settings
+.idea/
+*.swp
+*~
+
+# Ignore other common generated files
+*.log
+*.out
+*.tmp
+*.cache
