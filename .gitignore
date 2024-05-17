@@ -1,5 +1,7 @@
 # Ignore the cycloneddw_ws package
-cycloneddw_ws/
+cyclonedds_ws/
+example/
+unitree_sdk2
 
 # Ignore other common files and directories in ROS 2 workspaces
 
