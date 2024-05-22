@@ -13,7 +13,6 @@
             <geometry>
                 <mesh filename="package://go2_description/meshes/d435.dae" scale="1 1 1"/>
             </geometry>
-            <!-- <material name="black"/> -->
         </visual>
     </link>
 

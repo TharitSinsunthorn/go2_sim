@@ -126,9 +126,9 @@
         </visual>
     </gazebo> -->
 
-    <gazebo reference="base">
+    <!-- <gazebo reference="base">
         <turnGravityOff>false</turnGravityOff>
-    </gazebo>
+    </gazebo> -->
 
     <gazebo reference="trunk">
         <mu1>0.2</mu1>

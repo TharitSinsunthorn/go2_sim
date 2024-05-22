@@ -7,11 +7,10 @@
     <xacro:include filename="$(find go2_description)/xacro/const.xacro"/>
     <xacro:include filename="$(find go2_description)/xacro/materials.xacro"/>
     <xacro:include filename="$(find go2_description)/xacro/leg.xacro"/>
-    <!-- <xacro:include filename="$(find go2_description)/xacro/stairs.xacro"/> -->
     <xacro:include filename="$(find go2_description)/xacro/gazebo.xacro"/>
-    <!-- <xacro:include filename="$(find go2_gazebo)/launch/stairs.urdf.xacro"/> -->
     <xacro:include filename="$(find go2_description)/xacro/ros2_control.xacro"/>
     <xacro:include filename="$(find go2_description)/xacro/depth_camera.xacro"/>
+    <xacro:include filename="$(find go2_description)/xacro/velodyne.xacro"/>
 
 
     <!-- <xacro:stairs stairs="15" xpos="0" ypos="0" zpos="0" /> -->
@@ -20,14 +19,14 @@
     <!-- Actually, the rotor will rotate and the joint is not fixed. Reduction ratio should be considered. -->
 
     <!-- Debug mode will hung up the robot, use "true" or "false" to switch it. -->
-    <xacro:if value="$(arg DEBUG)">
+    <!-- <xacro:if value="$(arg DEBUG)">
         <link name="world"/>
         <joint name="base_static_joint" type="fixed">
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <parent link="world"/>
             <child link="base"/>
         </joint>
-    </xacro:if> 
+    </xacro:if>  -->
 
     <link name="base">
         <visual>
@@ -36,6 +35,17 @@
                 <box size="0.001 0.001 0.001"/>
             </geometry>
         </visual>
+    </link>
+
+    <!-- BASE FOOTPRINT LINK -->
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base"/>
+        <child link="base_footprint"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="base_footprint">
     </link>
 
     <joint name="floating_base" type="fixed">
