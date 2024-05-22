@@ -5,8 +5,8 @@ from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import Node
 from launch import LaunchDescription
 from launch.substitutions import LaunchConfiguration
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.event_handlers import OnProcessExit
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
+from launch.event_handlers import OnProcessExit, OnProcessStart
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 # this is the function launch  system will look for
@@ -29,7 +29,7 @@ def generate_launch_description():
 
     # Position and orientation
     # [X, Y, Z]
-    position = [0.05, 0.0, 0.6]
+    position = [0.0, 0.0, 0.6]
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]
     # Base Name or robot
@@ -62,7 +62,7 @@ def generate_launch_description():
     launch_ros2_control = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('go2_gazebo'), 'launch'),
-            '/jtc_go2.launch.py'])
+            '/controllers_go2.launch.py'])
     )
 
     visualize_robot = IncludeLaunchDescription(
