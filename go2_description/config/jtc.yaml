@@ -184,3 +184,22 @@ RLposition_trajectory_controller:
         p: 300.0
         i: 0.0
         d: 8.0
+
+
+imu_sensor:
+   ros__parameters:
+
+      sensor_name: "imu_sensor"
+      frame_id: imu_link
+
+      interface_names.orientation.x: imu_sensor/orientation.x
+      interface_names.orientation.y: imu_sensor/orientation.y
+      interface_names.orientation.z: imu_sensor/orientation.z
+
+      interface_names.angular_velocity.x: imu_sensor/angular_velocity.x
+      interface_names.angular_velocity.y: imu_sensor/angular_velocity.y
+      interface_names.angular_velocity.z: imu_sensor/angular_velocity.z
+
+      interface_names.linear_acceleration.x: imu_sensor/linear_acceleration.x
+      interface_names.linear_acceleration.y: imu_sensor/linear_acceleration.y
+      interface_names.linear_acceleration.z: imu_sensor/linear_acceleration.z
