@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="livox">
+
+    <xacro:mid360 name="livox" parent="base" topic="mid360">
+        <origin xyz="0 0 0.15" rpy="0 0 0"/>
+    </xacro:mid360>
+
+</robot>
