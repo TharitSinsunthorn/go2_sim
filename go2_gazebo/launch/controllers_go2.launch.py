@@ -15,6 +15,13 @@ def generate_launch_description():
         arguments=["joint_state_broadcaster",
                    "--controller-manager", "/controller_manager"],
     )
+    
+    imu_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["imu_sensor_broadcaster",
+                   "--controller-manager", "/controller_manager"],
+    )
 
     FR_robot_controller_spawner = Node(
         package="controller_manager",
@@ -70,5 +77,7 @@ def generate_launch_description():
                   on_start=[RL_robot_controller_spawner],
                 )
             ),
+            
+            # imu_broadcaster_spawner
         ]
     )
