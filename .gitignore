@@ -2,6 +2,7 @@
 cyclonedds_ws/
 example/
 unitree_sdk2/
+livox_ros_driver2/
 
 # Ignore other common files and directories in ROS 2 workspaces
 
